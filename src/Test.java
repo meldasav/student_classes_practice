@@ -87,8 +87,8 @@ public class Test {
             if (s.getClassName().equalsIgnoreCase("Math")) mathStudents++;
             else if (s.getClassName().equalsIgnoreCase("Science")) scienceStudents++;
         }
-        System.out.println(mathStudents);
-        System.out.println(scienceStudents);
+        System.out.println("Math students  " + mathStudents);
+        System.out.println("Science srudents  " + scienceStudents);
 
     }
 
