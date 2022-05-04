@@ -33,10 +33,9 @@ public class Test {
         int scienceStudents = 0;
         do {
             System.out.println(UserQuestions.askToJoin);
-            if (scan.nextLine().equalsIgnoreCase("N"))
-                continue;
-
-            System.out.println(UserQuestions.askFirstName);
+            String attend = scan.next();
+            if (attend.equalsIgnoreCase("y"))
+                System.out.println(UserQuestions.askFirstName);
             String firstNameE = scan.nextLine();
 
             System.out.println(UserQuestions.askLastName);
@@ -52,6 +51,7 @@ public class Test {
 
             } catch (Exception e) {
                 e.printStackTrace();
+                continue;
             }
             System.out.println(UserQuestions.askGender);
             String gender = scan.next();
@@ -65,16 +65,15 @@ public class Test {
 
             } catch (Exception e) {
                 e.printStackTrace();
+                continue;
             }
 
 
             if (classNameE.equalsIgnoreCase("Math")) {
-                mathStudents++;
                 System.out.println("Congratulations ! You are register for " + classNameE + "classes.");
                 Student student = new MathStudent(firstNameE, lastNameE, age, gender, classNameE);
                 students.add(student);
             } else if (classNameE.equalsIgnoreCase("science")) {
-                scienceStudents++;
                 System.out.println("Congratulations ! You are register for " + classNameE + "classes.");
                 students.add(new ScienceStudent(firstNameE, lastNameE, age, gender, classNameE));
             }
@@ -84,10 +83,13 @@ public class Test {
         for (Student s : students) {
             System.out.println(s);
         }
-
-            System.out.println(mathStudents);
-            System.out.println(scienceStudents);
-
+        for (Student s : students) {
+            if (s.getClassName().equalsIgnoreCase("Math")) mathStudents++;
+            else if (s.getClassName().equalsIgnoreCase("Science")) scienceStudents++;
         }
+        System.out.println(mathStudents);
+        System.out.println(scienceStudents);
 
     }
+
+}
