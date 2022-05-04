@@ -37,7 +37,7 @@ public class Test {
             if (attend.equalsIgnoreCase("y"))
                 System.out.println(UserQuestions.askFirstName);
             String firstNameE = scan.nextLine();
-
+            scan.nextLine();
             System.out.println(UserQuestions.askLastName);
             String lastNameE = scan.nextLine();
 
@@ -51,45 +51,47 @@ public class Test {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                continue;
+                break;
             }
             System.out.println(UserQuestions.askGender);
             String gender = scan.next();
 
-            String classNameE;
+
             System.out.println(UserQuestions.askClassName);
-            classNameE = scan.nextLine();
+            String classNameE = scan.nextLine();
+            scan.nextLine();
 
             try {
                 Permission.checkClassName(classNameE);
 
             } catch (Exception e) {
                 e.printStackTrace();
-                continue;
+                break;
             }
 
 
             if (classNameE.equalsIgnoreCase("Math")) {
+                mathStudents++;
                 System.out.println("Congratulations ! You are register for " + classNameE + "classes.");
                 Student student = new MathStudent(firstNameE, lastNameE, age, gender, classNameE);
                 students.add(student);
             } else if (classNameE.equalsIgnoreCase("science")) {
+                scienceStudents++;
                 System.out.println("Congratulations ! You are register for " + classNameE + "classes.");
                 students.add(new ScienceStudent(firstNameE, lastNameE, age, gender, classNameE));
             }
 
-        } while (students.size() < 3);
+        }
+        while (students.size() < 3);
 
         for (Student s : students) {
             System.out.println(s);
         }
-        for (Student s : students) {
-            if (s.getClassName().equalsIgnoreCase("Math")) mathStudents++;
-            else if (s.getClassName().equalsIgnoreCase("Science")) scienceStudents++;
+        if (students.size() == 3) {
+            System.out.println("Math students  " + mathStudents);
+            System.out.println("Science srudents  " + scienceStudents);
+
         }
-        System.out.println("Math students  " + mathStudents);
-        System.out.println("Science srudents  " + scienceStudents);
 
     }
-
 }

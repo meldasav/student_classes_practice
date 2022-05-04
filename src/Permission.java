@@ -13,8 +13,7 @@ public class Permission {
      */
 
     public static void checkAge(int age) {
-        if (age > 20) System.out.println();
-        else throw new RuntimeException(age + "\"is not allowed!\"");
+        if (age <= 20) throw new RuntimeException(age + "\"is not allowed!\"");
     }
 
     /**
@@ -26,9 +25,8 @@ public class Permission {
      * If the className is Math or Science, then it will do nothing
      */
     public static void checkClassName(String mathOrScienceClass) {
-        if (mathOrScienceClass.equalsIgnoreCase("Math") || mathOrScienceClass.equalsIgnoreCase("Science")) {
-            System.out.println();
-        } else throw new RuntimeException(mathOrScienceClass + "\"is not allowed!\"");
-
+        if (!(mathOrScienceClass.equalsIgnoreCase("Math") || mathOrScienceClass.equalsIgnoreCase("Science"))) {
+            throw new RuntimeException(mathOrScienceClass + " is not allowed!");
+        }
     }
 }
